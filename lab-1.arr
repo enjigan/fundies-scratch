@@ -15,3 +15,5 @@ image2 = overlay-align("center", "middle", circle(15, "solid", "yellow"), image1
 
 overlay-align("center", "bottom", circle(15, "solid", "green"), image2)
 
+rectangle(50, 20, "solid", "black")
+circle(30, "solid", "red")
