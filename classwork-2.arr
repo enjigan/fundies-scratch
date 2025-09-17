@@ -21,3 +21,8 @@ rectangle-height = 70
 yellow-circle2 = circle(circle-radius, "solid", "yellow")
 black-rectangle2 = rectangle(rectangle-width, rectangle-height, "solid", "black")
 above-align("center", yellow-circle2, black-rectangle2)
+
+triangle-color = "purple"
+triangle-side = 35
+my-triangle = triangle(triangle-side, "solid", triangle-color)
+my-triangle
