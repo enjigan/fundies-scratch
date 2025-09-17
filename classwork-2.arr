@@ -31,3 +31,11 @@ two-circles = beside(circle(20, "solid", "yellow"),
   circle(20, "solid", "yellow"))
 black-rectangle3 = rectangle(50, 70, "solid", "black")
 above(two-circles, black-rectangle3)
+
+base = rectangle(100, 50, "solid", "purple")
+
+base2 = overlay-align("right", "middle", rectangle(20, 50, "solid", "blue"), base)
+
+symbol = overlay(star(20, "solid", "yellow"),rotate(45, square(25, "solid", "blue")))
+
+overlay-align("center", "middle", symbol, base2)
