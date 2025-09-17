@@ -5,3 +5,5 @@ orange-triangle
 side-length = 40
 side-color = "pink"
 square(side-length, "solid", side-color)
+
+square(40, "solid", "pink")
