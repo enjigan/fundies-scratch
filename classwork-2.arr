@@ -7,3 +7,6 @@ side-color = "pink"
 square(side-length, "solid", side-color)
 
 square(40, "solid", "pink")
+
+side-length2 = 35
+square(40, "solid", "pink")
