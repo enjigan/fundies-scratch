@@ -1,0 +1,3 @@
+use context starter2024
+orange-triangle = triangle(35, "solid", "orange")
+orange-triangle
