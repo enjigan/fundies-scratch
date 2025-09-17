@@ -26,3 +26,8 @@ triangle-color = "purple"
 triangle-side = 35
 my-triangle = triangle(triangle-side, "solid", triangle-color)
 my-triangle
+
+two-circles = beside(circle(20, "solid", "yellow"),
+  circle(20, "solid", "yellow"))
+black-rectangle3 = rectangle(50, 70, "solid", "black")
+above(two-circles, black-rectangle3)
