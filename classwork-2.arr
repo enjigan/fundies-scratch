@@ -10,3 +10,7 @@ square(40, "solid", "pink")
 
 side-length2 = 35
 square(40, "solid", "pink")
+
+yellow-circle = circle(20, "solid", "yellow")
+black-rectangle = rectangle(50, 70, "solid", "black")
+above-align("center", yellow-circle, black-rectangle)
