@@ -28,3 +28,11 @@ where:
   choose-hat-ask(27) is "sun hat"
   choose-hat-ask(32) is "sun hat"
 end
+
+fun add-glasses(outfit :: String) -> String:
+  doc: "takes an outfit description and adds ', and glasses'"
+  outfit + ", and glasses"
+where:
+  add-glasses("t-shirt") is "t-shirt, and glasses"
+  add-glasses("pants") is "pants, and glasses"
+end
