@@ -45,3 +45,17 @@ where:
   choose-outfit(25) is "no hat, and glasses"
   choose-outfit(27) is "sun hat, and glasses"
 end
+
+fun choose-hat-or-visor(temp-in-C :: Number, has-visor :: Boolean) -> String:
+  doc: "chooses a visor if temp > 30C and the person has one, otherwise reuses choose-hat"
+  if has-visor and (temp-in-C > 30):
+    "visor"
+  else:
+    choose-hat(temp-in-C)
+  end
+where:
+  choose-hat-or-visor(32, true)  is "visor"
+  choose-hat-or-visor(32, false) is "sun hat"
+  choose-hat-or-visor(25, true)  is "no hat"
+  choose-hat-or-visor(5, true)   is "winter hat"
+end
