@@ -36,3 +36,12 @@ where:
   add-glasses("t-shirt") is "t-shirt, and glasses"
   add-glasses("pants") is "pants, and glasses"
 end
+
+fun choose-outfit(temp-in-C :: Number) -> String:
+  doc: "chooses a hat based on the temperature and always adds glasses"
+  add-glasses(choose-hat(temp-in-C))
+where:
+  choose-outfit(5)  is "winter hat, and glasses"
+  choose-outfit(25) is "no hat, and glasses"
+  choose-outfit(27) is "sun hat, and glasses"
+end
