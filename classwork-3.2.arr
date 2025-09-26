@@ -17,6 +17,16 @@ plants.row-n(5)
 
 plants.length()
 
-plants.row-n(105)
+#plants.row-n(105)
 
-plants["not_a_column"]
+#plants["not_a_column"] 
+
+glucose = load-table:
+  patient_id :: String,
+  glucose_level :: Number,
+  date_time :: Number,
+  insulin_dose :: Number,
+  exercise_duration :: Number,
+  stress_ :: Number
+  source: csv-table-file("glucose_levels.csv", default-options)
+end
