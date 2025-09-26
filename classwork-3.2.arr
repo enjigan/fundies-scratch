@@ -14,3 +14,5 @@ end
 
 plants.row-n(1)
 plants.row-n(5)
+
+plants.length()
