@@ -18,3 +18,5 @@ plants.row-n(5)
 plants.length()
 
 plants.row-n(105)
+
+plants["not_a_column"]
