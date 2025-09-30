@@ -29,4 +29,10 @@ glucose = load-table:
   exercise_duration :: Number,
   stress_ :: Number
   source: csv-table-file("glucose_levels.csv", default-options)
+    
+  sanitize glucose_level using num-sanitizer
+  sanitize date_time using num-sanitizer
+  sanitize insulin_dose using num-sanitizer
+  sanitize exercise_duration using num-sanitizer
+  sanitize stress_ using num-sanitizer
 end
