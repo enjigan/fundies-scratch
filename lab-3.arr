@@ -87,3 +87,22 @@ where:
     rock-paper-scissors("Rock", "scissors") is "invalid choice"
   end
 end
+
+planets = table: Planet, Distance
+  row: "Mercury", 0.39
+  row: "Venus", 0.72
+  row: "Earth", 1
+  row: "Mars", 1.52
+  row: "Jupiter", 5.2
+  row: "Saturn", 9.54
+  row: "Uranus", 19.2
+  row: "Neptune", 30.06
+end
+
+mars = planets.row-n(3)
+
+mars-distance = planets.row-n(3)["Distance"]
+
+  check:
+    mars-distance is 1.52
+  end
