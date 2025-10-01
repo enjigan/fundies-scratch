@@ -1,4 +1,6 @@
 use context dcic2024
+include csv
+
 orders = table: time, amount
   row: "08:00", 10.50
   row: "09:30", 5.75
@@ -28,4 +30,21 @@ latest-morning-amount = latest-morning.row-n(0)["amount"]
 check:
   latest-morning-amount is 3.95
 end
+
+photos = load-table:
+  Date :: String,
+  Subject :: String,
+  Location :: String
+  source: csv-table-url("https://raw.githubusercontent.com/NU-London/LCSCI4207-datasets/refs/heads/main/photos.csv", default-options)
+end
+
+forest-photos = filter-with(photos, lam(r): r["Subject"] == "Forest" end)
+
+sorted-forest-photos = order-by(forest-photos, "Date", false)
+
+most-recent-location = sorted-forest-photos.row-n(0)["Location"]
+
+location-counts = count(forest-photos, "Location")
+
+sorted-location-counts = order-by(location-counts, "count", false)
 
