@@ -88,6 +88,7 @@ where:
   end
 end
 
+#creates a table with two rows
 planets = table: Planet, Distance
   row: "Mercury", 0.39
   row: "Venus", 0.72
