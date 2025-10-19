@@ -32,3 +32,40 @@ check:
   tshirt-cost(4, "Go Team!") is 4 * (5 + (0.10 * string-length("Go Team!")))
   tshirt-cost(7, "Hello World") is 7 * (5 + (0.10 * string-length("Hello World")))
 end
+
+
+fun celsius-to-fahrenheit(celsius :: Number) -> Number:
+  
+  # Converts a temperature from degrees Celsius to degrees Fahrenheit.
+
+  # The conversion uses the formula: Fahrenheit = (Celsius * 9/5) + 32
+
+  # Parameters: celsius: The temperature in degrees Celsius.
+
+  # Returns: The equivalent temperature in degrees Fahrenheit.
+
+  (celsius * (9/5)) + 32
+end
+
+fun fahrenheit-to-celsius(fahrenheit :: Number) -> Number:
+
+  # Converts a temperature from degrees Fahrenheit to degrees Celsius.
+
+  # The conversion uses the formula: Celsius = (Fahrenheit - 32) * 5/9
+
+  # Parameters: fahrenheit: The temperature in degrees Fahrenheit.
+
+  # Returns: The equivalent temperature in degrees Celsius.
+
+  (fahrenheit - 32) * (5/9)
+end
+
+check:
+  celsius-to-fahrenheit(0) is 32
+  celsius-to-fahrenheit(100) is 212
+  celsius-to-fahrenheit(-40) is -40
+
+  fahrenheit-to-celsius(32) is 0
+  fahrenheit-to-celsius(212) is 100
+  fahrenheit-to-celsius(-40) is -40
+end
