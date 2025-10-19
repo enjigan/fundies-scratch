@@ -1,22 +1,41 @@
 use context starter2024
-circle(28, "solid", "red")
+orange-triangle = triangle(35, "solid", "orange")
+orange-triangle
 
-string-to-upper("hello cs2000!")
+side-length = 40
+side-color = "pink"
+square(side-length, "solid", side-color)
 
-overlay(circle(25, "solid", "blue"),
-  rectangle(35, 65, "solid", "yellow"))
+square(40, "solid", "pink")
 
-overlay(rectangle(60,20 , "solid", "green"), rectangle(60, 35, "solid", "purple"))
+side-length2 = 35
+square(40, "solid", "pink")
 
-rotate(10, rectangle(100, 20, "solid", "red"))
-  rotate(-10, rectangle(100, 20, "solid", "red"))
+yellow-circle = circle(20, "solid", "yellow")
+black-rectangle = rectangle(50, 70, "solid", "black")
+above-align("center", yellow-circle, black-rectangle)
 
-above(
-  beside(
-    crop(40, 40, 40, 40, circle(40, "solid", "blue")),
-    crop(0, 40, 40, 40, circle(40, "solid", "green"))),
-  beside(
-    crop(40, 0, 40, 40, circle(40, "solid", "green")),
-    crop(0, 0, 40, 40, circle(40, "solid", "blue"))))
+circle-radius = 20
+rectangle-width = 50
+rectangle-height = 70
+yellow-circle2 = circle(circle-radius, "solid", "yellow")
+black-rectangle2 = rectangle(rectangle-width, rectangle-height, "solid", "black")
+above-align("center", yellow-circle2, black-rectangle2)
 
-overlay(text("STOP", 24, "black"), regular-polygon(40, 8, "solid", "red"))
+triangle-color = "purple"
+triangle-side = 35
+my-triangle = triangle(triangle-side, "solid", triangle-color)
+my-triangle
+
+two-circles = beside(circle(20, "solid", "yellow"),
+  circle(20, "solid", "yellow"))
+black-rectangle3 = rectangle(50, 70, "solid", "black")
+above(two-circles, black-rectangle3)
+
+base = rectangle(100, 50, "solid", "purple")
+
+base2 = overlay-align("right", "middle", rectangle(20, 50, "solid", "blue"), base)
+
+symbol = overlay(star(20, "solid", "yellow"),rotate(45, square(25, "solid", "blue")))
+
+overlay-align("center", "middle", symbol, base2)

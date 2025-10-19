@@ -1,41 +1,11 @@
 use context starter2024
-orange-triangle = triangle(35, "solid", "orange")
-orange-triangle
+fun area(width :: Number, height :: Number) -> Number:
+  # Computes the area of a rectangle given its width and height.
 
-side-length = 40
-side-color = "pink"
-square(side-length, "solid", side-color)
+  # Parameters: width: The width of the rectangle (a Number). 
+  # height: The height of the rectangle (a Number).
 
-square(40, "solid", "pink")
-
-side-length2 = 35
-square(40, "solid", "pink")
-
-yellow-circle = circle(20, "solid", "yellow")
-black-rectangle = rectangle(50, 70, "solid", "black")
-above-align("center", yellow-circle, black-rectangle)
-
-circle-radius = 20
-rectangle-width = 50
-rectangle-height = 70
-yellow-circle2 = circle(circle-radius, "solid", "yellow")
-black-rectangle2 = rectangle(rectangle-width, rectangle-height, "solid", "black")
-above-align("center", yellow-circle2, black-rectangle2)
-
-triangle-color = "purple"
-triangle-side = 35
-my-triangle = triangle(triangle-side, "solid", triangle-color)
-my-triangle
-
-two-circles = beside(circle(20, "solid", "yellow"),
-  circle(20, "solid", "yellow"))
-black-rectangle3 = rectangle(50, 70, "solid", "black")
-above(two-circles, black-rectangle3)
-
-base = rectangle(100, 50, "solid", "purple")
-
-base2 = overlay-align("right", "middle", rectangle(20, 50, "solid", "blue"), base)
-
-symbol = overlay(star(20, "solid", "yellow"),rotate(45, square(25, "solid", "blue")))
-
-overlay-align("center", "middle", symbol, base2)
+  # Returns: The area of the rectangle as a Number.
+  
+  width * height
+end
