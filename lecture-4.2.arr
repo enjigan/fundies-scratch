@@ -50,3 +50,4 @@ tiny =
     row: "Axe"
     row: "Bow"
   end
+

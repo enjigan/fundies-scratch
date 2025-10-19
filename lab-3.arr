@@ -1,9 +1,9 @@
 use context starter2024
 # Contract:
-# tick :: Number -> Number
+# is-leap-year :: Number -> Boolean
 # Purpose:
-# Given a valid second (0-59), return the next second as if a clock were ticking.
-# If given 59, return 0
+# Given a year, return true if leap year else returns false.
+# Leap year valid if num-module 400 or 4 is == 0
 fun is-leap-year(year :: Number) -> Boolean:
   doc: "Return true if the given year is a leap year, otherwise false"
   if num-modulo(year, 400) == 0:
