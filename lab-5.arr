@@ -55,18 +55,7 @@ flights_53 = load-table:
   sanitize minute using num-sanitizer
 end
 
-# Task 2
-# Trim spaces at both ends
-fun trim(s :: String) -> String:
-  doc: "Remove spaces from the given string."
-  n = string-length(s)
-  if n == 0:
-    ""
-  else:
-    string-replace(s, " ", "")
-  end
-end
-
+# Task 1
 # trim(flights53.row-n(13)[Trim spaces at both ends
 fun trim(s :: String) -> String:
   doc: "Remove spaces from the given string."
@@ -124,7 +113,7 @@ end
 # Task 2
 # Fill missing/blank tailnum with "UNKNOWN"
 filledTail =
-  transform-column(flights53, "tailnum",
+  transform-column(flights_53, "tailnum",
     lam(s :: String):
       if string-length(s) == 0:
         "UNKNOWN"
@@ -159,7 +148,7 @@ cleanDelays =
 # 3)
 # Identify duplicate rows
 withKey =
-  build-column(flights53, "dedup_key",
+  build-column(flights_53, "dedup_key",
     lam(r :: Row):
       string-append(
         trim(to-string(r["flight"])),
