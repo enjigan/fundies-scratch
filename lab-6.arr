@@ -40,6 +40,30 @@ s1 = student(first["Name"], first["Surname"], first["Score"])
 s2 = student(second["Name"], second["Surname"], second["Score"])
 s3 = student(third["Name"], third["Surname"], third["Score"])
 
+# Recursive function: Count student with scores > 90
+scores = link(
+  s1.score,
+  link(
+    s2.score,
+    link(
+      s3.score,
+      empty
+    )
+  )
+)
+
+fun countAbove90(lst :: List<Number>) -> Number:
+  cases (List) lst:
+    | empty => 0
+    | link(first1, rest) =>
+      if first1 > 90:
+          1 + countAbove90(rest)
+        else:
+          countAbove90(rest)
+  end
+ end
+end
+
 
 
 
