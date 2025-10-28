@@ -80,4 +80,14 @@ fun studentsAbove80(lst :: List<Student>) -> List<Student>:
  end
 end
 
+# Extract the email column as a list
+all_emails = student_score.column("Email")
+
+# Recursive function to extract emails
+fun extractEmails(lst :: List<Any>) -> List<String>:
+  cases (List) lst:
+    | empty => empty
+    | link(first2, rest) => link(first2["Email"], extractEmails(rest))
+  end
+end
 
