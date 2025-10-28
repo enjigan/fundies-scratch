@@ -30,6 +30,11 @@ top3 = link(
         {Name: third["Name"], Surname: third["Surname"], Score: third["Score"]},
         empty)))
 
+# Define a structured Data type for the student
+data Student:
+  | student(name :: String, surname :: String, score :: Number)
+end
+
 
 
 
