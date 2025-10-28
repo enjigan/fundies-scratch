@@ -35,6 +35,10 @@ data Student:
   | student(name :: String, surname :: String, score :: Number)
 end
 
+# Replace the names and scores with your actual top 3 students
+s1 = student(first["Name"], first["Surname"], first["Score"])
+s2 = student(second["Name"], second["Surname"], second["Score"])
+s3 = student(third["Name"], third["Surname"], third["Score"])
 
 
 
