@@ -64,6 +64,20 @@ fun countAbove90(lst :: List<Number>) -> Number:
  end
 end
 
+# Recursive function to return Students with score > 80
+top_3 = link(s1, link(s2, link(s3, empty)))
 
+# Recursive function to filter students with score > 80
+fun studentsAbove80(lst :: List<Student>) -> List<Student>:
+  cases (List) lst:
+    | empty => empty
+    | link(first2, rest) =>
+      if first2.score > 80:
+        link(first2, studentsAbove80(rest))
+        else:
+          studentsAbove80(rest)
+  end
+ end
+end
 
 
