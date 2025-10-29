@@ -91,3 +91,12 @@ fun extractEmails(lst :: List<Any>) -> List<String>:
   end
 end
 
+# Extract domain names and find unique universities 
+#fun get-domain(email :: String) -> String:
+# can't figure out
+
+# Map function over all emails
+#uni-domain = map(get-domain, all_emails)
+
+# Get unique universities
+#unique-universities = distinct(uni-domain)
