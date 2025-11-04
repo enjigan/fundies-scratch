@@ -64,3 +64,38 @@ check:
   deepest-depth(hub1) is 1   # sensors are one level below
   deepest-depth(core) is 2   # sensors under hub1 are two levels below root
 end
+
+# Apply a Scaling Factor
+fun needed-scale(n :: SensorNet) -> Number:
+  cases (SensorNet) n:
+    | sensor(rate) => 1
+    | hub(bw, l, r) =>
+        block:
+          load = total-load(l) + total-load(r)
+          here = load / bw
+          num-max(num-max(here, needed-scale(l)), needed-scale(r))
+        end
+  end
+end
+
+fun apply-scale(n :: SensorNet, s :: Number) -> SensorNet:
+  cases (SensorNet) n:
+    | sensor(rate) => sensor(rate / s)
+    | hub(bandwidth, left, right) =>
+        hub(bandwidth, apply-scale(left, s), apply-scale(right, s))
+  end
+end
+check:
+  # Scaling manually by 1.2
+  scaled-core = apply-scale(core, 1.2)
+  total-load(core) is 225
+  total-load(scaled-core) is 187.5
+
+  # Check structure unchanged but scaled rates
+  fits-capacities(scaled-core) is true
+
+  # Using helper function
+  needed-scale(core) is 1.2
+  scaled-auto = apply-scale(core, needed-scale(core))
+  fits-capacities(scaled-auto) is true
+end
