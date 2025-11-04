@@ -99,3 +99,31 @@ check:
   scaled-auto = apply-scale(core, needed-scale(core))
   fits-capacities(scaled-auto) is true
 end
+
+# Scale Network Just Enough to Make It Feasible
+fun scale-to-fit(n :: SensorNet) -> SensorNet:
+  s = needed-scale(n)
+  if s <= 1:
+    n
+  else:
+    apply-scale(n, s)
+  end
+end
+check:
+  # Needed scale for core is 1.2
+  needed-scale(core) is 1.2
+
+  # Automatically scale to make it feasible
+  scaled-fit = scale-to-fit(core)
+
+  # Check that it now fits capacities
+  fits-capacities(scaled-fit) is true
+
+  # Total load should be 225 / 1.2 = 187.5
+  total-load(scaled-fit) is 187.5
+
+  # Check a network that is already feasible
+  goodHub1 = hub(200, sA, sB)
+  goodCore = hub(250, goodHub1, sC)
+  scale-to-fit(goodCore) is goodCore   # already fits, unchanged
+end
