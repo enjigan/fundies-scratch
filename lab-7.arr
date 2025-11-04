@@ -50,3 +50,17 @@ check:
   goodCore = hub(250, goodHub1, sC)  # 180 + 45 = 225 ≤ 250 → feasible
   fits-capacities(goodCore) is true
 end
+
+# Depth of the Deepest Sensor
+fun deepest-depth(n :: SensorNet) -> Number:
+  cases (SensorNet) n:
+    | sensor(rate) => 0
+    | hub(bandwidth, left, right) =>
+        1 + num-max(deepest-depth(left), deepest-depth(right))
+  end
+end
+check:
+  deepest-depth(sA) is 0
+  deepest-depth(hub1) is 1   # sensors are one level below
+  deepest-depth(core) is 2   # sensors under hub1 are two levels below root
+end
