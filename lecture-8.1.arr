@@ -89,3 +89,30 @@ check:
   taxon-height(felis) is 2
   taxon-height(felidae) is 3  
 end
+
+# Returns a list of all names in the TaxonomyTree (duplicates are okay). You'll need an all-names and all-names-list functions.
+fun all-names(t :: TaxonomyTree) -> List<String>:
+  cases (TaxonomyTree) t:
+    | node(rank, name, children) =>
+        append([list: name], all-names-list(children))
+  end
+end
+
+fun all-names-list(c :: List<TaxonomyTree>) -> List<String>:
+  cases (List) c:
+    | empty => [list:]
+    | link(first, rest) =>
+        append(all-names(first), all-names-list(rest))
+  end
+end
+
+check:
+  all-names(lion) is [list: "Panthera leo"]
+  all-names(panthera) is [list: "Panthera", "Panthera leo", "Panthera tigris", "Panthera pardus"]
+  all-names(felis) is [list: "Felis", "Felis catus", "Felis silvestris"]
+  all-names(felidae) is
+    [list:
+      "Felidae",
+      "Panthera", "Panthera leo", "Panthera tigris", "Panthera pardus",
+      "Felis", "Felis catus", "Felis silvestris"]
+end
