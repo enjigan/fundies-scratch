@@ -38,3 +38,31 @@ check:
   count-species(felis) is 2
   count-species(felidae) is 5
 end
+
+# Takes a TaxonomyTree and a rank string that returns the number of nodes with that rank.
+fun count-rank(t :: TaxonomyTree, target-rank :: String) -> Number:
+  cases (TaxonomyTree) t:
+    | node(rank, name, children) =>
+        if rank == target-rank:
+          1 + count-rank-children(children, target-rank)
+        else:
+          count-rank-children(children, target-rank)
+        end
+  end
+end
+
+fun count-rank-children(c :: List<TaxonomyTree>, target-rank :: String) -> Number:
+  cases (List) c:
+    | empty => 0
+    | link(first, rest) =>
+        count-rank(first, target-rank) + count-rank-children(rest, target-rank)
+  end
+end
+
+check:
+  count-rank(felidae, "Species") is 5
+  count-rank(felidae, "Genus") is 2
+  count-rank(felidae, "Family") is 1
+  count-rank(panthera, "Species") is 3
+  count-rank(panthera, "Genus") is 1
+end
