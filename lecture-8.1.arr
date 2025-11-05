@@ -66,3 +66,26 @@ check:
   count-rank(panthera, "Species") is 3
   count-rank(panthera, "Genus") is 1
 end
+
+# Returns the number of levels in the TaxonomyTree.
+fun taxon-height(t :: TaxonomyTree) -> Number: 
+   cases (TaxonomyTree) t:
+    | node(rank, name, children) =>
+        1 + taxon-height-children(children)
+  end
+end
+
+fun taxon-height-children(c :: List<TaxonomyTree>) -> Number:
+  cases (List) c:
+    | empty => 0
+    | link(first, rest) =>
+        num-max(taxon-height(first), taxon-height-children(rest))
+  end
+end
+
+check:
+  taxon-height(lion) is 1        
+  taxon-height(panthera) is 2    
+  taxon-height(felis) is 2
+  taxon-height(felidae) is 3  
+end
