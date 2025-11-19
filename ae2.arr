@@ -1,15 +1,15 @@
 use context dcic2024
-include csv
-penguins-table = load-table:
-  species :: String,
-  island :: String,
-  bill_length_mm :: Number,
-  bill_depth_mm :: Number,
-  flipper_length_mm :: Number,
-  body_mass_g :: Number,
-  sex :: String
-  source: "penguins.csv"
-end
+# include csv
+# penguins-table = load-table:
+# species :: String,
+# island :: String,
+# bill_length_mm :: Number,
+# bill_depth_mm :: Number,
+# flipper_length_mm :: Number,
+# body_mass_g :: Number,
+# sex :: String
+# source: csv-table-file("penguins.csv", default-options)
+# end
 
 fun max-flipper-length(flippers :: List<Number>) -> Number:
   doc: "Returns the maximum flipper length from a non-empty list"
@@ -45,46 +45,23 @@ end
 
 fun select-long-bills(penguins :: List<{bill_length_mm :: Number}>) -> List<{bill_length_mm :: Number}>:
   doc: "Selects penguin records whose bill_length_mm > 45"
-  filter(lam(p):p.bill_length_mm > 45 
-    end,
-    penguins)
+  filter(lam(p):p.bill_length_mm > 45 end, penguins)
 where:
-  select-long-bills(
-    [list:
-      { bill_length_mm: 40 },
-      { bill_length_mm: 49 },
-      { bill_length_mm: 47 }
-    ]
-  )
-  is
-  [list:
-    { bill_length_mm: 49 },
-    { bill_length_mm: 47 }
-  ]
+  select-long-bills([list: { bill_length_mm: 40 }, { bill_length_mm: 49 }, { bill_length_mm: 47 }]) is [list: { bill_length_mm: 49 }, { bill_length_mm: 47 }]
 end
 
 fun count-adelie(penguins :: List<{species :: String}>) -> Number:
-  doc: "Counts how many penguin records in the list have species 'Adelie'"
-  fun helper(num, lst):
-    cases (List) lst:
-      | empty => num
-      | link(p, rest) =>
-        if p.species == "Adelie":
-          helper(num + 1, rest)
-        else:
-          helper(num, rest)
-        end
-    end
+  cases (List) penguins:
+    | empty => 0
+    | link(first, rest) =>
+      if first.species == "Adelie":
+        1 + count-adelie(rest)
+      else:
+        count-adelie(rest)
+      end
   end
-  helper(0, penguins)
 where:
-  count-adelie(
-    [list:
-      { species: "Adelie" },
-      { species: "Gentoo" },
-      { species: "Adelie" }
-    ]
-  ) is 2
-
+  count-adelie([list: {species: "Adelie"}, {species: "Gentoo"}, {species: "Adelie"}]) is 2
   count-adelie([list: { species: "Chinstrap" }]) is 0
 end
+
