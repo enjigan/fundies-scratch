@@ -21,7 +21,7 @@ dataset-records = penguins_table.all-rows()
 
 # Scalar Processing
 fun get-flipper-length(record):
-  doc: "Extracts flipper length as a number from a record"
+  doc: "Extracts flipper length as a number from dataset"
   string-to-number(record["flipper_length_mm"]).or-else(0)
 end
 
@@ -34,19 +34,20 @@ end
 fun calculate-average(num-list):
   doc: "Calculates the average of a list of numbers"
   total = fold(lam(acc, n): acc + n end, 0, num-list)
-  total / length(num-list)
+  num-to-roughnum(total) / length(num-list)
 end
 
 check:
-  calculate-average([list: 10, 20, 30]) is 20
-  calculate-average([list: 5, 5, 5, 5]) is 5
-  calculate-average([list: 100]) is 100
+  calculate-average([list: 10, 20, 30]) is%(within(0.01)) 20
+  calculate-average([list: 5, 5, 5, 5]) is%(within(0.01)) 5
+  calculate-average([list: 100]) is%(within(0.01)) 100
 end
 
 flipper-lengths = map(get-flipper-length, dataset-records)
 average-flipper-length = calculate-average(flipper-lengths)
 
-print("Average flipper length: " + num-to-string(average-flipper-length) + "mm")
+"Average flipper length: " + num-to-string-digits(average-flipper-length, 2) + "mm"
+
 
 
 # Transformation
@@ -65,8 +66,7 @@ end
 
 masses-in-kg = map(grams-to-kilograms, dataset-records)
 
-print("First 10 body masses in kg:")
-print(masses-in-kg.take(10))
+masses-in-kg.take(10)
 
 # Selection
 fun has-long-bill(record) -> Boolean:
@@ -85,7 +85,7 @@ end
 
 long-bill-penguins = filter(has-long-bill, dataset-records)
 
-print("Number of penguins with bill > 50mm: " + num-to-string(length(long-bill-penguins)))
+"Number of penguins with bill > 50mm: " + num-to-string(length(long-bill-penguins))
 
 # Accumulation
 fun sum-flipper-lengths(record-list):
@@ -111,4 +111,4 @@ end
 
 total-flipper-sum = sum-flipper-lengths(dataset-records)
 
-print("Sum of all flipper lengths: " + num-to-string(total-flipper-sum) + "mm")
+"Sum of all flipper lengths: " + num-to-string(total-flipper-sum) + "mm"
